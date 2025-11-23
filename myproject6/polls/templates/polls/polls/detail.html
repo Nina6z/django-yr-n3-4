@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poll Detail</title>
+</head>
+<body>
+    <h1>This is the Poll Detail Page</h1>
+    <a href="{% url 'index' %}">Back to Index Page</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ question.question_text }}</title>
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
+    {% empty %}
+        <li>No choices available.</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Back to Index</a>
+</body>
+</html>
